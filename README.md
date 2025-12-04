@@ -106,6 +106,7 @@ React documentation: https://react.dev
 Tailwind CSS: https://tailwindcss.com/docs
 Built with care for thoughtful psychiatric practice.
 
+Deployed with React 18.
 
 ---
 
