@@ -10,9 +10,19 @@ export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Hero Image Subtle Zoom Animation
+      gsap.to(heroImageRef.current, {
+        scale: 1.05,
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+        yoyo: true,
+      });
+
       // Hero Text Animation
       gsap.from(".hero-text", {
         y: 100,
@@ -56,17 +66,20 @@ export default function HomePage() {
     <div className="flex flex-col w-full overflow-x-hidden">
       {/* HERO SECTION */}
       <section ref={heroRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="https://cdn.wegic.ai/assets/onepage/agent/images/1764784074064.jpg"
-        >
-          <source src="https://cdn.wegic.ai/assets/onepage/agent/videos/1764784025725.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/20 z-10" />
+        {/* Background Image with Subtle Animation */}
+        <div 
+          ref={heroImageRef}
+          className="absolute top-0 left-0 w-full h-full z-0"
+          style={{
+            backgroundImage: 'url(https://cdn.wegic.ai/assets/onepage/agent/images/1764933418561.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: 'scale(1)',
+          }}
+        />
+        
+        {/* Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 z-10" />
         
         <div className="relative z-20 container mx-auto px-6 text-white">
           <div className="max-w-4xl">
